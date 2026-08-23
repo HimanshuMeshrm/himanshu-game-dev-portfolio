@@ -1,119 +1,12 @@
  "use client";
 
 import { useEffect, useMemo, useState } from "react";
+import Link from "next/link";
 import {
-  ArrowDown, ArrowUpRight, ChevronRight, Github, Linkedin, Mail,
-  Menu, Play, Sparkles, X, Download
+  ArrowDown, ArrowUpRight, ChevronRight, Download, Github, Linkedin,
+  Mail, Menu, Play, Sparkles, X, Code2, Gamepad2, Cpu, Layers3, ExternalLink
 } from "lucide-react";
-
-type Project = {
-  id: string;
-  title: string;
-  type: string;
-  year: string;
-  tags: string[];
-  description: string;
-  long: string;
-  accent: "acid" | "violet" | "cyan" | "orange";
-  icon: string;
-  features: string[];
-  status: string;
-  demo: string;
-  github: string;
-};
-
-const projects: Project[] = [
-  {
-    id: "chronoshift",
-    title: "ChronoShift",
-    type: "3D GAME",
-    year: "2026",
-    tags: ["Unity", "C#", "Prototype"],
-    icon: "◒",
-    accent: "acid",
-    description: "A time-bending game concept built around movement, timing and reactive gameplay systems.",
-    long: "ChronoShift is a prototype focused on a strong central time-control mechanic. The project is a showcase of gameplay logic, player interaction, state handling and level-flow experimentation.",
-    features: ["Time-control gameplay", "Player controller systems", "Reactive level logic", "Gameplay prototyping"],
-    status: "Prototype / In Development",
-    demo: "#",
-    github: "#"
-  },
-  {
-    id: "freezerun",
-    title: "Freeze Run",
-    type: "MOBILE GAME",
-    year: "2026",
-    tags: ["Unity", "C#", "Mobile"],
-    icon: "❄",
-    accent: "cyan",
-    description: "An endless runner where holding the screen freezes time and creates a risk-versus-reward loop.",
-    long: "Freeze Run is designed around one readable mobile interaction: hold to freeze the world, release to move again. An energy system turns the mechanic into a strategic decision rather than a simple button.",
-    features: ["Hold-to-freeze mechanic", "Energy management", "Mobile input", "Endless game loop"],
-    status: "Prototype",
-    demo: "#",
-    github: "#"
-  },
-  {
-    id: "deepcore",
-    title: "DeepCore Dive",
-    type: "ROGUELITE",
-    year: "2026",
-    tags: ["Unity", "3D", "Prototype"],
-    icon: "⌁",
-    accent: "violet",
-    description: "A roguelite mining concept focused on underground exploration, resources and procedural spaces.",
-    long: "DeepCore Dive explores how procedural environments and progression can create replayable exploration. The portfolio version highlights the systems and design thinking behind the prototype.",
-    features: ["3D exploration", "Procedural direction", "Resource systems", "Progression concept"],
-    status: "Concept / Prototype",
-    demo: "#",
-    github: "#"
-  },
-  {
-    id: "crop",
-    title: "AI Crop Simulator",
-    type: "EDUCATIONAL",
-    year: "2026",
-    tags: ["Unity", "Simulation", "Education"],
-    icon: "⌘",
-    accent: "acid",
-    description: "An educational simulation concept showing students how AI can support farming decisions.",
-    long: "AI Crop Simulator was designed as a student-friendly experience. It uses a simple simulation loop to communicate how AI can help with decisions such as crop planning and resource management.",
-    features: ["Simulation loop", "Educational UX", "Decision systems", "AI concept"],
-    status: "Educational Prototype",
-    demo: "#",
-    github: "#"
-  },
-  {
-    id: "fruit",
-    title: "Fruit Collector",
-    type: "MINI GAME",
-    year: "2025",
-    tags: ["Unity", "3D", "Prototype"],
-    icon: "✦",
-    accent: "orange",
-    description: "A compact Unity gameplay prototype built to practice interaction, scoring and game-loop fundamentals.",
-    long: "Fruit Collector is one of the smaller prototypes in the portfolio. It demonstrates the ability to turn a simple mechanic into a complete playable loop with feedback and scoring.",
-    features: ["Player interaction", "Score system", "Game loop", "Prototype iteration"],
-    status: "Prototype",
-    demo: "#",
-    github: "#"
-  },
-  {
-    id: "lava",
-    title: "Floor is Lava",
-    type: "MINI GAME",
-    year: "2025",
-    tags: ["Unity", "3D", "Prototype"],
-    icon: "△",
-    accent: "violet",
-    description: "A Unity 3D prototype focused on movement, hazards and quick gameplay iteration.",
-    long: "Floor is Lava is a small gameplay experiment that helped develop practical Unity skills around movement, collision, hazards and level composition.",
-    features: ["3D movement", "Hazards", "Collision logic", "Level prototype"],
-    status: "Prototype",
-    demo: "#",
-    github: "#"
-  }
-];
+import { projects, type Project } from "@/lib/projects";
 
 const filters = ["All", "Unity", "C#", "Mobile", "3D", "Prototype", "Education"];
 
@@ -158,299 +51,314 @@ export default function Portfolio() {
 
   return (
     <>
-      <div style={{ position: "fixed", top: 0, left: 0, width: `${progress}%`, height: 2, background: "var(--acid)", zIndex: 100 }} />
+      <div style={{position:"fixed",top:0,left:0,width:`${progress}%`,height:2,background:"var(--acid)",zIndex:100}} />
 
-      <header className="container" style={{ height: 78, display: "flex", alignItems: "center", justifyContent: "space-between", position: "relative", zIndex: 60 }}>
-        <a href="#top" style={{ display: "flex", alignItems: "center", gap: 10, fontWeight: 800, letterSpacing: ".1em" }}>
-          <span style={{ width: 31, height: 31, borderRadius: 8, display: "grid", placeItems: "center", background: "var(--acid)", color: "#07080c" }}>H</span>
-          HIMANSHU<span style={{ color: "var(--acid)" }}>.</span>
-        </a>
+      <header className="container nav">
+        <Link href="#top" className="brand">
+          <span className="brand-mark">H</span>
+          HIMANSHU<span style={{color:"var(--acid)"}}>.</span>
+        </Link>
 
-        <nav style={{ display: "flex", gap: 28, fontSize: 13, color: "var(--muted)" }} className="desktop-nav">
-          <a href="#games">Games</a>
-          <a href="#about">About</a>
-          <a href="#skills">Skills</a>
-          <a href="#contact">Contact</a>
+        <nav className="nav-links">
+          <Link href="#games">Games</Link>
+          <Link href="#about">About</Link>
+          <Link href="#skills">Skills</Link>
+          <Link href="#resume">Resume</Link>
+          <Link href="#contact">Contact</Link>
         </nav>
 
-        <a href="#contact" className="desktop-nav" style={{ border: "1px solid var(--line)", padding: "10px 14px", borderRadius: 8, fontSize: 12 }}>
-          LET&apos;S BUILD <span style={{ color: "var(--acid)" }}>↗</span>
-        </a>
-
-        <button onClick={() => setMobileOpen(!mobileOpen)} aria-label="Menu" style={{ display: "none", background: "none", border: 0, color: "white" }} className="mobile-menu">
-          <Menu />
-        </button>
+        <Link href="#contact" className="nav-cta">LET&apos;S BUILD <ArrowUpRight size={13}/></Link>
+        <button className="mobile-menu-btn" onClick={() => setMobileOpen(!mobileOpen)} aria-label="Open menu"><Menu/></button>
       </header>
 
       {mobileOpen && (
-        <div style={{ position: "fixed", top: 70, left: 20, right: 20, zIndex: 55, padding: 20, background: "var(--panel)", border: "1px solid var(--line)", borderRadius: 12 }} className="mobile-menu">
-          <div style={{ display: "grid", gap: 18 }}>
-            {["games", "about", "skills", "contact"].map((x) => (
-              <a key={x} href={`#${x}`} onClick={() => setMobileOpen(false)} style={{ textTransform: "uppercase", fontSize: 12 }}>{x}</a>
-            ))}
-          </div>
+        <div className="mobile-menu-panel">
+          {["games","about","skills","resume","contact"].map((x) => (
+            <Link key={x} href={`#${x}`} onClick={() => setMobileOpen(false)}>{x}</Link>
+          ))}
         </div>
       )}
 
       <main id="top">
-        <section className="container hero-section">
+        <section className="container hero">
           <div>
-            <div className="mono" style={{ fontSize: 11, letterSpacing: ".12em", color: "var(--acid)", display: "flex", gap: 8, alignItems: "center" }}>
-              <span className="pulse" style={{ width: 7, height: 7, borderRadius: "50%", background: "var(--acid)" }} />
-              GAME PROGRAMMER · UNITY · C#
+            <div className="mono kicker"><span className="pulse-dot"/> GAME PROGRAMMER · UNITY · C#</div>
+            <h1>I BUILD GAMES<br/><span>PEOPLE REMEMBER.</span></h1>
+            <p className="hero-copy">I&apos;m Himanshu, a BCA Game Development student and aspiring game programmer focused on gameplay systems, Unity, C# and interactive experiences.</p>
+            <div className="hero-buttons">
+              <Link href="#games" className="button-primary">EXPLORE MY GAMES <ArrowDown size={17}/></Link>
+              <a href="/resume.pdf" className="button-secondary">DOWNLOAD RESUME <Download size={17}/></a>
             </div>
-
-            <h1 style={{ fontSize: "clamp(56px,8vw,108px)", lineHeight: .87, letterSpacing: "-.07em", margin: "22px 0 28px", maxWidth: 900 }}>
-              I BUILD GAMES<br />
-              <span style={{ color: "var(--acid)" }}>PEOPLE REMEMBER.</span>
-            </h1>
-
-            <p style={{ fontSize: 18, lineHeight: 1.65, color: "var(--muted)", maxWidth: 560 }}>
-              I&apos;m Himanshu, a game developer focused on gameplay programming, systems, and polished interactive experiences.
-            </p>
-
-            <div style={{ display: "flex", gap: 10, flexWrap: "wrap", marginTop: 30 }}>
-              <a href="#games" style={{ background: "var(--acid)", color: "#07080c", padding: "14px 18px", borderRadius: 9, fontSize: 13, fontWeight: 700, display: "inline-flex", gap: 20 }}>
-                EXPLORE MY GAMES <ArrowDown size={17} />
-              </a>
-              <a href="#contact" style={{ border: "1px solid var(--line)", padding: "14px 18px", borderRadius: 9, fontSize: 13, display: "inline-flex", gap: 20 }}>
-                CONTACT ME <ArrowUpRight size={17} />
-              </a>
-            </div>
-
-            <div style={{ display: "flex", gap: 35, marginTop: 55 }}>
-              {[["Unity", "ENGINE"], ["C#", "PROGRAMMING"], ["3D", "GAMES"]].map(([a, b]) => (
-                <div key={a}><b>{a}</b><div className="mono" style={{ fontSize: 9, color: "var(--muted)", marginTop: 5 }}>{b}</div></div>
-              ))}
+            <div className="hero-stats">
+              <div><b>UNITY</b><span>ENGINE</span></div>
+              <div><b>C#</b><span>GAMEPLAY</span></div>
+              <div><b>3D</b><span>DEVELOPMENT</span></div>
+              <div><b>GIT</b><span>WORKFLOW</span></div>
             </div>
           </div>
 
           <div className="hero-art grid-bg float">
-            <div style={{ position: "absolute", width: 280, height: 280, borderRadius: "50%", background: "radial-gradient(circle,rgba(139,108,255,.32),transparent 65%)", top: 40, right: 20 }} />
-            <div style={{ position: "absolute", width: 220, height: 220, borderRadius: "50%", background: "radial-gradient(circle,rgba(201,255,59,.18),transparent 65%)", bottom: 0, left: 0 }} />
-
-            <div style={{ width: "82%", background: "rgba(7,8,12,.88)", border: "1px solid var(--line)", borderRadius: 14, padding: 20, position: "relative", zIndex: 2, transform: "rotate(2deg)" }}>
-              <div className="mono" style={{ fontSize: 10, color: "#74798a", borderBottom: "1px solid var(--line)", paddingBottom: 14, display: "flex", justifyContent: "space-between" }}>
-                <span>PLAYER_CONTROLLER.cs</span><span>● ● ●</span>
-              </div>
-              <pre className="mono" style={{ fontSize: 12, lineHeight: 1.9, color: "#d9dbe4", overflow: "auto", margin: "18px 0" }}>
-                {codeLines.join("\n")}
-              </pre>
-              <div className="mono" style={{ fontSize: 10, color: "#858998" }}>
-                <span style={{ color: "var(--acid)" }}>●</span> SYSTEMS ONLINE
-              </div>
+            <div className="orb orb-one"/>
+            <div className="orb orb-two"/>
+            <div className="code-card">
+              <div className="code-head"><span>PLAYER_CONTROLLER.cs</span><span>● ● ●</span></div>
+              <pre>{codeLines.join("\n")}</pre>
+              <div className="code-status"><span/> SYSTEMS ONLINE</div>
             </div>
-
-            <span className="mono hero-tag-left">GAMEPLAY</span>
-            <span className="mono hero-tag-right">SYSTEMS</span>
+            <span className="hero-tag tag-left mono">GAMEPLAY</span>
+            <span className="hero-tag tag-right mono">SYSTEMS</span>
           </div>
         </section>
 
-        <div style={{ borderBlock: "1px solid var(--line)", overflow: "hidden", whiteSpace: "nowrap", padding: "18px 0", fontSize: 11 }} className="mono">
-          <div className="marquee-track" style={{ display: "inline-block", color: "#737887", letterSpacing: ".1em" }}>
-            GAMEPLAY PROGRAMMING <span style={{ color: "var(--acid)", margin: "0 25px" }}>✦</span>
-            UNITY <span style={{ color: "var(--acid)", margin: "0 25px" }}>✦</span>
-            C# <span style={{ color: "var(--acid)", margin: "0 25px" }}>✦</span>
-            GAME SYSTEMS <span style={{ color: "var(--acid)", margin: "0 25px" }}>✦</span>
-            PROTOTYPING <span style={{ color: "var(--acid)", margin: "0 25px" }}>✦</span>
-            GAME DESIGN <span style={{ color: "var(--acid)", margin: "0 25px" }}>✦</span>
-            GAMEPLAY PROGRAMMING <span style={{ color: "var(--acid)", margin: "0 25px" }}>✦</span>
-            UNITY <span style={{ color: "var(--acid)", margin: "0 25px" }}>✦</span>
-            C#
+        <div className="marquee mono">
+          <div className="marquee-track">
+            GAMEPLAY PROGRAMMING <i>✦</i> UNITY <i>✦</i> C# <i>✦</i> GAME AI <i>✦</i> GAME SYSTEMS <i>✦</i> PROTOTYPING <i>✦</i> GAME DESIGN <i>✦</i> GITHUB <i>✦</i> GAMEPLAY PROGRAMMING <i>✦</i> UNITY <i>✦</i> C# <i>✦</i>
           </div>
         </div>
 
-        <section id="games" className="container" style={{ padding: "125px 0" }}>
-          <div style={{ display: "flex", justifyContent: "space-between", alignItems: "end", gap: 40, marginBottom: 35, flexWrap: "wrap" }}>
-            <div>
-              <div className="mono" style={{ fontSize: 11, color: "var(--muted)" }}>01 / SELECTED WORK</div>
-              <h2 style={{ fontSize: "clamp(45px,6vw,76px)", lineHeight: .95, letterSpacing: "-.06em", margin: "14px 0" }}>GAMES &amp; <span style={{ color: "var(--acid)" }}>PROJECTS.</span></h2>
-            </div>
-            <p style={{ maxWidth: 380, color: "var(--muted)", lineHeight: 1.65, fontSize: 14 }}>
-              A growing collection of prototypes, experiments and game-development work. Each project can become a full case study.
-            </p>
-          </div>
-
-          <div style={{ display: "flex", gap: 8, flexWrap: "wrap", marginBottom: 25 }}>
+        <section id="games" className="container section">
+          <SectionHeading number="01 / SELECTED WORK" title={<>GAMES &amp; <span>PROJECTS.</span></>} text="Playable ideas, prototypes and systems I have built while learning game development." />
+          <div className="filter-row">
             {filters.map((f) => (
-              <button key={f} onClick={() => setFilter(f)} style={{ border: `1px solid ${filter === f ? "var(--acid)" : "var(--line)"}`, background: filter === f ? "var(--acid)" : "transparent", color: filter === f ? "#07080c" : "var(--muted)", padding: "9px 13px", borderRadius: 100, fontSize: 11, cursor: "pointer" }} className="mono">
-                {f}
-              </button>
+              <button key={f} className={`filter ${filter === f ? "active" : ""}`} onClick={() => setFilter(f)}>{f}</button>
             ))}
           </div>
 
           <div className="project-grid">
-            {shown.map((p, i) => (
-              <ProjectCard key={p.id} p={p} featured={i === 0 && shown.length > 2} onOpen={() => setSelected(p)} />
+            {shown.map((project, index) => (
+              <ProjectCard key={project.slug} project={project} featured={index === 0 && shown.length > 2} onOpen={() => setSelected(project)} />
             ))}
           </div>
         </section>
 
-        <section id="about" className="container about-section">
-          <div className="photo-placeholder grid-bg">
-            <div style={{ fontSize: 70, fontWeight: 800, lineHeight: .8, letterSpacing: "-.08em", color: "rgba(255,255,255,.09)", textAlign: "center" }}>YOUR<br />PHOTO</div>
-            <div className="mono" style={{ position: "absolute", bottom: 22, fontSize: 10, color: "#6d7180" }}>REPLACE WITH DEVELOPER PORTRAIT</div>
-            <div style={{ position: "absolute", right: -30, bottom: 30, background: "var(--acid)", color: "#07080c", padding: "18px 20px", borderRadius: 10, display: "flex", gap: 18, alignItems: "center" }}>
-              <b style={{ fontSize: 32 }}>01</b><span className="mono" style={{ fontSize: 10 }}>GAME<br />PROGRAMMER<br />PORTFOLIO</span>
-            </div>
+        <section id="about" className="container about section">
+          <div className="about-photo grid-bg">
+            <div className="photo-letter">H</div>
+            <div className="photo-note mono">YOUR PHOTO / DEVELOPER PORTRAIT</div>
+            <div className="experience-card"><b>GAME<br/>PROGRAMMER</b><span>PORTFOLIO</span></div>
           </div>
 
           <div>
-            <div className="mono" style={{ fontSize: 11, color: "var(--muted)" }}>02 / ABOUT ME</div>
-            <h2 style={{ fontSize: "clamp(45px,6vw,76px)", lineHeight: .95, letterSpacing: "-.06em", margin: "14px 0 25px" }}>FROM IDEA → <span style={{ color: "var(--acid)" }}>PLAYABLE.</span></h2>
-            <p style={{ color: "var(--muted)", lineHeight: 1.8 }}>I enjoy turning game ideas into working systems — from player movement and health to enemy AI, UI, state machines and interactive mechanics.</p>
-            <p style={{ color: "var(--muted)", lineHeight: 1.8 }}>My current focus is becoming a stronger gameplay programmer and building a portfolio that demonstrates both technical ability and game-design thinking.</p>
-            <div style={{ borderLeft: "2px solid var(--acid)", padding: "8px 0 8px 18px", margin: "28px 0", color: "#dfe1e7" }}>
-              “Good code disappears into the experience. The player just feels the game.”
+            <div className="mono section-label">02 / ABOUT ME</div>
+            <h2>FROM IDEA → <span>PLAYABLE.</span></h2>
+            <p>I&apos;m studying BCA Game Development and building my skills toward a career in game programming. My main focus is turning game ideas into working gameplay systems in Unity using C#.</p>
+            <p>I enjoy the technical side of games: player controllers, health systems, UI, enemy AI, state machines, NavMesh, object pooling and reusable gameplay architecture.</p>
+            <p>I also experiment with game design, 3D workflows and Unreal Engine/C++ as I continue expanding my programming foundation.</p>
+            <div className="quote">“Good code disappears into the experience. The player just feels the game.”</div>
+            <div className="about-actions">
+              <a href="https://github.com/HimanshuMeshrm" target="_blank" rel="noreferrer" className="button-secondary"><Github size={16}/> GITHUB</a>
+              <a href="#contact" className="button-secondary">LET&apos;S CONNECT <ArrowUpRight size={16}/></a>
             </div>
           </div>
         </section>
 
-        <section id="skills" className="container" style={{ padding: "20px 0 125px" }}>
-          <div style={{ display: "flex", justifyContent: "space-between", alignItems: "end", marginBottom: 40, flexWrap: "wrap", gap: 25 }}>
-            <div>
-              <div className="mono" style={{ fontSize: 11, color: "var(--muted)" }}>03 / TOOLKIT</div>
-              <h2 style={{ fontSize: "clamp(45px,6vw,76px)", lineHeight: .95, letterSpacing: "-.06em", margin: "14px 0" }}>MY <span style={{ color: "var(--acid)" }}>STACK.</span></h2>
-            </div>
-            <p style={{ maxWidth: 380, color: "var(--muted)", fontSize: 14, lineHeight: 1.6 }}>Tools and concepts I use to prototype and develop games.</p>
+        <section id="skills" className="container section skills">
+          <SectionHeading number="03 / TECHNICAL TOOLKIT" title={<>WHAT I <span>BUILD WITH.</span></>} text="The technologies and gameplay concepts I am actively developing." />
+
+          <div className="skill-cards">
+            <Skill icon={<Gamepad2/>} title="Unity & Gameplay" text="Unity 3D, URP, Input System, Cinemachine, gameplay loops and prototyping." />
+            <Skill icon={<Code2/>} title="C# Programming" text="OOP, classes, methods, properties, events, state machines and reusable systems." />
+            <Skill icon={<Cpu/>} title="Game Systems & AI" text="Enemy AI, NavMesh, health systems, object pooling, managers and UI communication." />
+            <Skill icon={<Layers3/>} title="Development Tools" text="Git/GitHub, Blender/Maya, Mixamo, Quixel and Unreal Engine/C++ exploration." />
           </div>
 
-          <div style={{ borderTop: "1px solid var(--line)" }}>
+          <div className="skill-table">
             {[
-              ["01", "Unity", "3D development · URP · Input System · Cinemachine · NavMesh", "90%"],
-              ["02", "C#", "OOP · gameplay systems · events · state machines · patterns", "80%"],
-              ["03", "Game Systems", "Player controllers · AI · UI · health · pooling · managers", "78%"],
-              ["04", "Tools", "Git · Blender/Maya · Mixamo · Quixel · GitHub · Itch.io", "72%"]
-            ].map(([n, t, d, v]) => (
-              <div key={n} className="skill-row">
-                <span className="mono" style={{ fontSize: 10, color: "#666b79" }}>{n}</span>
-                <div><h3 style={{ margin: "0 0 6px", fontSize: 20 }}>{t}</h3><p style={{ margin: 0, color: "var(--muted)", fontSize: 12 }}>{d}</p></div>
-                <b className="mono" style={{ fontSize: 11, color: "var(--acid)", textAlign: "right" }}>{v}</b>
+              ["Unity", "Gameplay, 3D, URP, Input System, NavMesh", "PRIMARY"],
+              ["C#", "Gameplay programming, OOP, systems", "PRIMARY"],
+              ["C++", "Programming foundation / Unreal exploration", "LEARNING"],
+              ["Game AI", "Enemy AI, NavMesh, state machines", "FOCUS"],
+              ["Git / GitHub", "Version control and portfolio workflow", "WORKFLOW"],
+              ["Blender / 3D", "Basic asset and environment workflow", "SUPPORT"]
+            ].map(([name,desc,status]) => (
+              <div className="skill-line" key={name}>
+                <b>{name}</b><span>{desc}</span><em className="mono">{status}</em>
               </div>
             ))}
           </div>
         </section>
 
-        <section className="container" style={{ paddingBottom: 125 }}>
-          <div style={{ maxWidth: 820, margin: "auto", background: "#0b0d12", border: "1px solid var(--line)", borderRadius: 12, overflow: "hidden" }}>
-            <div className="mono" style={{ background: "#12151d", padding: "11px 14px", fontSize: 10, color: "#74798a", display: "flex", justifyContent: "space-between" }}>
-              <span>himanshu@portfolio:~</span><span>● ● ●</span>
+        <section id="resume" className="container resume-section section">
+          <div className="resume-card">
+            <div>
+              <div className="mono section-label">04 / RESUME</div>
+              <h2>READY TO <span>BUILD.</span></h2>
+              <p>A concise snapshot of my game-development education, technical skills and selected projects.</p>
             </div>
-            <div className="mono" style={{ padding: 24, fontSize: 12, lineHeight: 1.8, minHeight: 250 }}>
-              <p><span style={{ color: "var(--acid)" }}>$</span> whoami</p>
-              <p style={{ color: "#8e94a5", marginLeft: 15 }}>game_developer.exe</p>
-              <p><span style={{ color: "var(--acid)" }}>$</span> cat focus.txt</p>
-              <p style={{ color: "#8e94a5", marginLeft: 15 }}>Gameplay programming<br />Interactive systems<br />Unity + C#</p>
-              <p><span style={{ color: "var(--acid)" }}>$</span> status</p>
-              <p style={{ color: "var(--acid)", marginLeft: 15 }}>OPEN TO INTERNSHIPS · JUNIOR GAME PROGRAMMING ROLES</p>
-              <p><span style={{ color: "var(--acid)" }}>$</span> <span style={{ animation: "blink 1s steps(1) infinite" }}>_</span></p>
+            <div className="resume-actions">
+              <a href="/resume.pdf" download className="button-primary"><Download size={17}/> DOWNLOAD RESUME</a>
+              <a href="/resume.pdf" target="_blank" className="button-secondary"><ExternalLink size={17}/> VIEW PDF</a>
+            </div>
+          </div>
+
+          <div className="resume-facts">
+            <div><span className="mono">EDUCATION</span><b>BCA — Game Development</b><small>Seamedu, Pune</small></div>
+            <div><span className="mono">SPECIALIZATION</span><b>Game Programming</b><small>Unity · C# · Gameplay Systems</small></div>
+            <div><span className="mono">CURRENT FOCUS</span><b>Building polished playable projects</b><small>Portfolio · GitHub · Itch.io · internships</small></div>
+          </div>
+        </section>
+
+        <section className="container terminal-section">
+          <div className="terminal">
+            <div className="terminal-bar mono"><span>himanshu@portfolio:~</span><span>● ● ●</span></div>
+            <div className="terminal-body mono">
+              <p><span>$</span> whoami</p><p className="out">game_developer.exe</p>
+              <p><span>$</span> cat focus.txt</p><p className="out">Gameplay programming<br/>Interactive systems<br/>Unity + C#</p>
+              <p><span>$</span> status</p><p className="success">OPEN TO INTERNSHIPS · JUNIOR GAME PROGRAMMING ROLES</p>
+              <p><span>$</span> <i className="cursor">_</i></p>
             </div>
           </div>
         </section>
 
-        <section id="contact" className="container" style={{ textAlign: "center", padding: "30px 0 150px" }}>
-          <div className="mono" style={{ fontSize: 11, color: "var(--muted)" }}>04 / CONTACT</div>
-          <h2 style={{ fontSize: "clamp(65px,10vw,125px)", lineHeight: .88, letterSpacing: "-.07em", margin: "18px 0" }}>HAVE A GAME<br /><span style={{ color: "var(--acid)" }}>IN MIND?</span></h2>
-          <p style={{ maxWidth: 500, margin: "25px auto", color: "var(--muted)", lineHeight: 1.7 }}>I&apos;m interested in building, learning and collaborating on interesting interactive projects.</p>
-          <div style={{ display: "flex", justifyContent: "center", gap: 10, flexWrap: "wrap", marginTop: 30 }}>
-            <a href="mailto:your.email@example.com" style={{ background: "var(--acid)", color: "#07080c", padding: "16px 20px", borderRadius: 9, fontWeight: 700, fontSize: 13, display: "inline-flex", gap: 18 }}>EMAIL ME <Mail size={17} /></a>
-            <a href="#" style={{ border: "1px solid var(--line)", padding: "16px 20px", borderRadius: 9, fontSize: 13, display: "inline-flex", gap: 18 }}>GITHUB <Github size={17} /></a>
-            <a href="#" style={{ border: "1px solid var(--line)", padding: "16px 20px", borderRadius: 9, fontSize: 13, display: "inline-flex", gap: 18 }}>LINKEDIN <Linkedin size={17} /></a>
-            <a href="/resume.pdf" style={{ border: "1px solid var(--line)", padding: "16px 20px", borderRadius: 9, fontSize: 13, display: "inline-flex", gap: 18 }}>RESUME <Download size={17} /></a>
+        <section id="contact" className="container contact section">
+          <div className="mono section-label">05 / CONTACT</div>
+          <h2>LET&apos;S MAKE<br/><span>SOMETHING PLAYABLE.</span></h2>
+          <p>For internships, junior game-programming opportunities, collaborations or game projects, get in touch.</p>
+          <div className="contact-buttons">
+            <a href="mailto:your.email@example.com" className="button-primary"><Mail size={17}/> EMAIL ME</a>
+            <a href="https://github.com/HimanshuMeshrm" target="_blank" rel="noreferrer" className="button-secondary"><Github size={17}/> GITHUB</a>
+            <a href="#" className="button-secondary"><Linkedin size={17}/> LINKEDIN</a>
+            <a href="/resume.pdf" className="button-secondary"><Download size={17}/> RESUME</a>
           </div>
         </section>
       </main>
 
-      <footer className="container" style={{ borderTop: "1px solid var(--line)", padding: "25px 0", display: "flex", justifyContent: "space-between", gap: 15, flexWrap: "wrap", color: "#666b79", fontSize: 10 }}>
-        <span>© 2026 HIMANSHU</span><span className="mono">BUILT WITH CODE &amp; CURIOSITY</span><a href="#top">BACK TO TOP ↑</a>
+      <footer className="container footer">
+        <span>© 2026 HIMANSHU</span>
+        <span className="mono">UNITY · C# · GAMEPLAY</span>
+        <Link href="#top">BACK TO TOP ↑</Link>
       </footer>
 
-      {selected && (
-        <div onMouseDown={(e) => { if (e.currentTarget === e.target) setSelected(null); }} style={{ position: "fixed", inset: 0, zIndex: 90, background: "rgba(0,0,0,.78)", backdropFilter: "blur(8px)", display: "grid", placeItems: "center", padding: 20 }}>
-          <div style={{ width: "min(780px,100%)", maxHeight: "90vh", overflow: "auto", background: "var(--panel)", border: "1px solid var(--line)", borderRadius: 16, padding: 34, position: "relative" }}>
-            <button onClick={() => setSelected(null)} aria-label="Close project" style={{ position: "absolute", right: 15, top: 12, background: "none", border: 0, color: "white", cursor: "pointer" }}><X /></button>
-            <div className="mono" style={{ fontSize: 10, color: "var(--muted)" }}>{selected.type} · {selected.year}</div>
-            <h3 style={{ fontSize: "clamp(40px,7vw,64px)", letterSpacing: "-.06em", margin: "12px 0" }}>{selected.title}</h3>
-            <div style={{ height: 230, borderRadius: 12, border: "1px solid var(--line)", display: "grid", placeItems: "center", background: selected.accent === "violet" ? "radial-gradient(circle,rgba(139,108,255,.22),transparent 45%),#090a0f" : selected.accent === "cyan" ? "radial-gradient(circle,rgba(102,217,255,.2),transparent 45%),#090a0f" : "radial-gradient(circle,rgba(201,255,59,.18),transparent 45%),#090a0f", margin: "24px 0" }}>
-              <span className="mono" style={{ fontSize: 11, color: "#707586" }}>ADD GAMEPLAY VIDEO / GIF / SCREENSHOT HERE</span>
-            </div>
-            <p style={{ color: "var(--muted)", lineHeight: 1.8 }}>{selected.long}</p>
-            <h4 style={{ marginTop: 28 }}>What I built</h4>
-            <div className="feature-grid">
-              {selected.features.map((x) => (
-                <div key={x} style={{ border: "1px solid var(--line)", padding: 12, borderRadius: 8, fontSize: 12 }}>
-                  <Sparkles size={14} style={{ verticalAlign: "middle", marginRight: 7, color: "var(--acid)" }} />{x}
-                </div>
-              ))}
-            </div>
-            <div style={{ display: "flex", gap: 10, marginTop: 25, flexWrap: "wrap" }}>
-              <a href={selected.github} style={{ background: "var(--acid)", color: "#07080c", padding: "12px 15px", borderRadius: 8, fontSize: 12, fontWeight: 700, display: "inline-flex", gap: 10 }}>GITHUB <Github size={15} /></a>
-              <a href={selected.demo} style={{ border: "1px solid var(--line)", padding: "12px 15px", borderRadius: 8, fontSize: 12, display: "inline-flex", gap: 10 }}>PLAY / DEMO <Play size={15} /></a>
-            </div>
-          </div>
-        </div>
-      )}
+      {selected && <ProjectModal project={selected} onClose={() => setSelected(null)} />}
 
       <style jsx>{`
-        .hero-section{min-height:calc(100vh - 78px);display:grid;grid-template-columns:1.05fr .95fr;align-items:center;gap:40px;padding-top:40px;padding-bottom:70px}
-        .hero-art{height:550px;border:1px solid var(--line);border-radius:18px;position:relative;overflow:hidden;display:grid;place-items:center}
-        .hero-tag-left{position:absolute;top:35px;left:25px;font-size:10px;border:1px solid var(--line);padding:9px 11px;background:#0c0e14}
-        .hero-tag-right{position:absolute;bottom:35px;right:25px;font-size:10px;border:1px solid var(--line);padding:9px 11px;background:#0c0e14}
+        .nav{height:78px;display:flex;align-items:center;justify-content:space-between;position:relative;z-index:60}
+        .brand{display:flex;align-items:center;gap:10px;font-weight:800;letter-spacing:.1em}
+        .brand-mark{width:31px;height:31px;border-radius:8px;display:grid;place-items:center;background:var(--acid);color:#07080c}
+        .nav-links{display:flex;gap:25px;font-size:13px;color:var(--muted)}
+        .nav-links a:hover,.nav-cta:hover{color:var(--text)}
+        .nav-cta{display:flex;align-items:center;gap:5px;border:1px solid var(--line);padding:10px 14px;border-radius:8px;font-size:12px}
+        .mobile-menu-btn{display:none;background:none;border:0;color:white}
+        .mobile-menu-panel{display:none}
+        .hero{min-height:calc(100vh - 78px);display:grid;grid-template-columns:1.05fr .95fr;align-items:center;gap:40px;padding:50px 0 80px}
+        .kicker{font-size:11px;letter-spacing:.12em;color:var(--acid);display:flex;gap:8px;align-items:center}
+        .pulse-dot{width:7px;height:7px;border-radius:50%;background:var(--acid)}
+        .hero h1{font-size:clamp(55px,7.7vw,106px);line-height:.86;letter-spacing:-.07em;margin:22px 0 28px}
+        .hero h1 span,h2 span{color:var(--acid)}
+        .hero-copy{font-size:18px;line-height:1.65;color:var(--muted);max-width:600px}
+        .hero-buttons,.about-actions,.contact-buttons{display:flex;gap:10px;flex-wrap:wrap;margin-top:30px}
+        .button-primary,.button-secondary{display:inline-flex;align-items:center;justify-content:center;gap:12px;padding:14px 17px;border-radius:9px;font-size:12px}
+        .button-primary{background:var(--acid);color:#07080c;font-weight:700}
+        .button-secondary{border:1px solid var(--line);background:rgba(255,255,255,.015)}
+        .hero-stats{display:flex;gap:30px;margin-top:52px}
+        .hero-stats div{display:grid;gap:4px}.hero-stats b{font-size:14px}.hero-stats span{font-size:9px;color:var(--muted);font-family:"Courier New",monospace}
+        .hero-art{height:560px;border:1px solid var(--line);border-radius:18px;position:relative;overflow:hidden;display:grid;place-items:center}
+        .orb{position:absolute;border-radius:50%;filter:blur(2px)}.orb-one{width:280px;height:280px;right:0;top:20px;background:radial-gradient(circle,rgba(139,108,255,.30),transparent 65%)}.orb-two{width:230px;height:230px;left:-20px;bottom:-30px;background:radial-gradient(circle,rgba(201,255,59,.18),transparent 65%)}
+        .code-card{width:82%;background:rgba(7,8,12,.9);border:1px solid var(--line);border-radius:14px;padding:20px;position:relative;z-index:2;transform:rotate(2deg);box-shadow:0 30px 80px rgba(0,0,0,.45)}
+        .code-head,.terminal-bar{font-size:10px;color:#74798a;border-bottom:1px solid var(--line);padding-bottom:14px;display:flex;justify-content:space-between}
+        .code-card pre{font-size:12px;line-height:1.9;color:#d9dbe4;overflow:auto;margin:18px 0}
+        .code-status{font-size:10px;color:#858998}.code-status span{display:inline-block;width:6px;height:6px;border-radius:50%;background:var(--acid);margin-right:7px}
+        .hero-tag{position:absolute;font-size:10px;border:1px solid var(--line);padding:9px 11px;background:#0c0e14;z-index:3}.tag-left{top:35px;left:25px}.tag-right{bottom:35px;right:25px}
+        .marquee{border-block:1px solid var(--line);padding:18px 0;overflow:hidden;white-space:nowrap;font-size:11px;color:#737887;letter-spacing:.1em}
+        .marquee-track{display:inline-block}.marquee i{font-style:normal;color:var(--acid);margin:0 25px}
+        .section{padding:125px 0}
+        .section-label{font-size:11px;color:var(--muted);letter-spacing:.08em}
+        .section-head{display:flex;justify-content:space-between;align-items:end;gap:40px;margin-bottom:35px}
+        .section-head h2,.about h2,.resume-card h2{font-size:clamp(45px,6vw,76px);line-height:.92;letter-spacing:-.06em;margin:14px 0}
+        .section-head p{max-width:390px;color:var(--muted);font-size:14px;line-height:1.65}
+        .filter-row{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:25px}.filter{border:1px solid var(--line);background:transparent;color:var(--muted);padding:9px 13px;border-radius:100px;font:11px "Courier New",monospace;cursor:pointer}.filter.active{background:var(--acid);border-color:var(--acid);color:#07080c}
         .project-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px}
-        .about-section{padding:60px 0 125px;display:grid;grid-template-columns:.8fr 1.2fr;gap:100px;align-items:center}
-        .photo-placeholder{height:520px;border:1px solid var(--line);border-radius:16px;display:grid;place-items:center;background-color:#0c0f15;position:relative}
-        .skill-row{display:grid;grid-template-columns:60px 1fr 60px;gap:20px;padding:25px 0;border-bottom:1px solid var(--line);align-items:center}
-        .feature-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:8px}
-        @media(max-width:850px){
-          .hero-section{grid-template-columns:1fr}
-          .hero-art{height:430px}
-          .about-section{grid-template-columns:1fr;gap:50px}
-          .project-grid{grid-template-columns:1fr}
-          .project-grid article:first-child{grid-column:auto!important}
-        }
-        @media(max-width:800px){
-          .desktop-nav{display:none!important}.mobile-menu{display:block!important}
-          .container{width:calc(100% - 32px)}
-          .skill-row{grid-template-columns:40px 1fr 50px}
-        }
-        @media(max-width:600px){
-          .feature-grid{grid-template-columns:1fr}
-          .hero-art{height:390px}
-          .hero-art > div:nth-child(3){width:90%!important}
-        }
+        .project-card{background:var(--panel);border:1px solid var(--line);border-radius:15px;overflow:hidden;transition:transform .25s,border-color .25s}.project-card:hover{transform:translateY(-5px);border-color:rgba(201,255,59,.35)}
+        .project-card.featured{grid-column:span 2;display:grid;grid-template-columns:1.2fr .8fr}
+        .project-art{min-height:280px;position:relative;display:grid;place-items:center;overflow:hidden}.project-card.featured .project-art{min-height:390px}
+        .project-icon{font-size:170px;font-weight:800;opacity:.12}.project-art-label{position:absolute;top:20px;left:20px;font-size:10px;letter-spacing:.12em}.project-status{position:absolute;bottom:20px;left:20px;font-size:9px;color:#8a8f9e}
+        .project-info{padding:25px}.project-top{display:flex;justify-content:space-between;color:#727687;font-size:10px}.project-info h3{font-size:30px;letter-spacing:-.04em;margin:18px 0 10px}.project-info p{color:var(--muted);font-size:13px;line-height:1.6}.tags{display:flex;gap:6px;flex-wrap:wrap;margin-top:18px}.tags span{font-size:9px;padding:6px 8px;background:rgba(255,255,255,.04);border:1px solid var(--line);border-radius:100px;color:#a6aab7}.case-link{border:0;background:none;color:var(--acid);padding:0;margin-top:24px;font-size:11px;cursor:pointer;display:flex;align-items:center;gap:7px}
+        .about{display:grid;grid-template-columns:.8fr 1.2fr;gap:100px;align-items:center;padding-top:60px}
+        .about-photo{height:520px;border:1px solid var(--line);border-radius:16px;display:grid;place-items:center;background-color:#0c0f15;position:relative}
+        .photo-letter{font-size:220px;font-weight:800;line-height:.8;color:rgba(255,255,255,.07)}.photo-note{position:absolute;bottom:22px;font-size:10px;color:#6d7180}
+        .experience-card{position:absolute;right:-30px;bottom:30px;background:var(--acid);color:#07080c;padding:18px 20px;border-radius:10px;display:flex;gap:18px;align-items:center}.experience-card b{font-size:17px;line-height:1.1}.experience-card span{font-size:9px}
+        .about p{color:var(--muted);line-height:1.85;font-size:15px}.quote{border-left:2px solid var(--acid);padding:8px 0 8px 18px;margin:28px 0;color:#dfe1e7}
+        .skills{padding-top:70px}.skill-cards{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:55px}.skill-card{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:22px}.skill-card svg{color:var(--acid)}.skill-card h3{margin:18px 0 9px;font-size:18px}.skill-card p{margin:0;color:var(--muted);font-size:12px;line-height:1.65}
+        .skill-table{border-top:1px solid var(--line)}.skill-line{display:grid;grid-template-columns:180px 1fr 100px;gap:20px;padding:20px 0;border-bottom:1px solid var(--line);align-items:center}.skill-line span{color:var(--muted);font-size:12px}.skill-line em{font-style:normal;color:var(--acid);font-size:9px;text-align:right}
+        .resume-section{padding-top:40px}.resume-card{border:1px solid var(--line);border-radius:16px;padding:38px;display:flex;justify-content:space-between;align-items:center;gap:40px;background:linear-gradient(135deg,rgba(201,255,59,.06),rgba(139,108,255,.04))}.resume-card p{color:var(--muted);line-height:1.7;max-width:570px}.resume-actions{display:flex;gap:9px;flex-wrap:wrap}.resume-facts{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);margin-top:18px;border:1px solid var(--line)}.resume-facts div{background:var(--panel);padding:22px;display:grid;gap:7px}.resume-facts span{color:var(--muted);font-size:9px}.resume-facts b{font-size:15px}.resume-facts small{color:#6f7483;font-size:11px}
+        .terminal-section{padding-bottom:125px}.terminal{max-width:820px;margin:auto;background:#0b0d12;border:1px solid var(--line);border-radius:12px;overflow:hidden}.terminal-body{padding:24px;font-size:12px;line-height:1.8;min-height:250px}.terminal-body p{margin:0 0 5px}.terminal-body p span{color:var(--acid)}.out{color:#8e94a5;margin-left:15px}.success{color:var(--acid)!important;margin-left:15px}.cursor{font-style:normal}
+        .contact{text-align:center;padding-bottom:150px}.contact h2{font-size:clamp(62px,9.5vw,120px);line-height:.88;letter-spacing:-.07em;margin:18px 0}.contact p{max-width:540px;margin:25px auto;color:var(--muted);line-height:1.7}.contact-buttons{justify-content:center}
+        .footer{border-top:1px solid var(--line);padding:25px 0;display:flex;justify-content:space-between;gap:15px;flex-wrap:wrap;color:#666b79;font-size:10px}
+        .modal-backdrop{position:fixed;inset:0;z-index:90;background:rgba(0,0,0,.80);backdrop-filter:blur(8px);display:grid;place-items:center;padding:20px}.modal{width:min(820px,100%);max-height:90vh;overflow:auto;background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:34px;position:relative}.modal-close{position:absolute;right:15px;top:12px;background:none;border:0;color:white;cursor:pointer}.modal h3{font-size:clamp(40px,7vw,65px);letter-spacing:-.06em;margin:12px 0}.modal-media{height:250px;border:1px solid var(--line);border-radius:12px;display:grid;place-items:center;text-align:center;margin:25px 0}.modal p{color:var(--muted);line-height:1.8}.modal-features{display:grid;grid-template-columns:repeat(2,1fr);gap:8px}.modal-feature{border:1px solid var(--line);padding:12px;border-radius:8px;font-size:12px}.modal-actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:25px}
+        @media(max-width:950px){.skill-cards{grid-template-columns:repeat(2,1fr)}.about{grid-template-columns:1fr;gap:50px}.hero{grid-template-columns:1fr}.hero-art{height:450px}.resume-card{display:block}.resume-actions{margin-top:25px}}
+        @media(max-width:800px){.nav-links,.nav-cta{display:none}.mobile-menu-btn{display:block}.mobile-menu-panel{display:grid;gap:18px;position:fixed;top:70px;left:16px;right:16px;z-index:55;padding:22px;background:var(--panel);border:1px solid var(--line);border-radius:12px;text-transform:uppercase;font-size:12px}.container{width:calc(100% - 32px)}.project-grid{grid-template-columns:1fr}.project-card.featured{grid-column:auto;display:block}.project-card.featured .project-art{min-height:280px}.skill-line{grid-template-columns:120px 1fr}.skill-line em{display:none}.resume-facts{grid-template-columns:1fr}.section{padding:90px 0}}
+        @media(max-width:600px){.skill-cards{grid-template-columns:1fr}.hero h1{font-size:58px}.hero-stats{gap:18px;flex-wrap:wrap}.hero-art{height:390px}.code-card{width:92%}.about-photo{height:420px}.experience-card{right:10px}.modal-features{grid-template-columns:1fr}}
       `}</style>
     </>
   );
 }
 
-function ProjectCard({ p, featured, onOpen }: { p: Project; featured: boolean; onOpen: () => void }) {
-  const bg = p.accent === "violet"
-    ? "radial-gradient(circle at 60% 55%,rgba(139,108,255,.28),transparent 25%),linear-gradient(135deg,#171924,#08090d)"
-    : p.accent === "cyan"
-      ? "radial-gradient(circle at 40% 45%,rgba(102,217,255,.22),transparent 25%),linear-gradient(135deg,#0e1821,#10131b)"
-      : p.accent === "orange"
-        ? "radial-gradient(circle at 50% 50%,rgba(255,145,80,.20),transparent 25%),linear-gradient(135deg,#1b1411,#0d0e12)"
-        : "radial-gradient(circle at 65% 50%,rgba(201,255,59,.20),transparent 25%),linear-gradient(135deg,#171a24,#08090d)";
+function SectionHeading({number,title,text}:{number:string;title:React.ReactNode;text:string}) {
+  return (
+    <div className="section-head">
+      <div><div className="mono section-label">{number}</div><h2>{title}</h2></div>
+      <p>{text}</p>
+    </div>
+  );
+}
+
+function Skill({icon,title,text}:{icon:React.ReactNode;title:string;text:string}) {
+  return <div className="skill-card"><div>{icon}</div><h3>{title}</h3><p>{text}</p></div>;
+}
+
+function ProjectCard({project,featured,onOpen}:{project:Project;featured:boolean;onOpen:()=>void}) {
+  const background =
+    project.accent === "violet" ? "radial-gradient(circle at 60% 55%,rgba(139,108,255,.28),transparent 25%),linear-gradient(135deg,#171924,#08090d)" :
+    project.accent === "cyan" ? "radial-gradient(circle at 40% 45%,rgba(102,217,255,.22),transparent 25%),linear-gradient(135deg,#0e1821,#10131b)" :
+    project.accent === "orange" ? "radial-gradient(circle at 50% 50%,rgba(255,145,80,.20),transparent 25%),linear-gradient(135deg,#1b1411,#0d0e12)" :
+    "radial-gradient(circle at 65% 50%,rgba(201,255,59,.20),transparent 25%),linear-gradient(135deg,#171a24,#08090d)";
 
   return (
-    <article style={{ gridColumn: featured ? "span 2" : "auto", background: "var(--panel)", border: "1px solid var(--line)", borderRadius: 15, overflow: "hidden", display: featured ? "grid" : "block", gridTemplateColumns: featured ? "1.2fr .8fr" : undefined }}>
-      <div style={{ minHeight: featured ? 390 : 280, position: "relative", overflow: "hidden", background: bg, display: "grid", placeItems: "center" }}>
-        <span className="mono" style={{ position: "absolute", top: 20, left: 20, fontSize: 10, letterSpacing: ".12em" }}>{p.title.toUpperCase()}</span>
-        <span style={{ fontSize: 170, fontWeight: 800, opacity: .11, lineHeight: 1 }}>{p.icon}</span>
-        <span className="mono" style={{ position: "absolute", bottom: 20, left: 20, fontSize: 9, color: "#8a8f9e" }}>{p.status}</span>
+    <article className={`project-card ${featured ? "featured" : ""}`}>
+      <div className="project-art" style={{background}}>
+        <span className="mono project-art-label">{project.title.toUpperCase()}</span>
+        <span className="project-icon">{project.icon}</span>
+        <span className="mono project-status">{project.status}</span>
       </div>
-
-      <div style={{ padding: 25 }}>
-        <div className="mono" style={{ display: "flex", justifyContent: "space-between", fontSize: 10, color: "#727687" }}><span>{p.year}</span><span>{p.type}</span></div>
-        <h3 style={{ fontSize: 30, letterSpacing: "-.04em", margin: "18px 0 10px" }}>{p.title}</h3>
-        <p style={{ color: "var(--muted)", fontSize: 13, lineHeight: 1.6 }}>{p.description}</p>
-        <div style={{ display: "flex", gap: 6, flexWrap: "wrap", marginTop: 18 }}>
-          {p.tags.map((t) => <span key={t} className="mono" style={{ fontSize: 9, padding: "6px 8px", background: "rgba(255,255,255,.04)", border: "1px solid var(--line)", borderRadius: 100, color: "#a6aab7" }}>{t}</span>)}
+      <div className="project-info">
+        <div className="mono project-top"><span>{project.year}</span><span>{project.type}</span></div>
+        <h3>{project.title}</h3>
+        <p>{project.short}</p>
+        <div className="tags">{project.tags.map((tag)=><span key={tag}>{tag}</span>)}</div>
+        <div style={{display:"flex",gap:18,alignItems:"center",flexWrap:"wrap"}}>
+          <button className="case-link" onClick={onOpen}>QUICK VIEW <ChevronRight size={15}/></button>
+          <Link className="case-link" href={`/projects/${project.slug}`}>FULL CASE STUDY <ArrowUpRight size={14}/></Link>
         </div>
-        <button onClick={onOpen} style={{ border: 0, background: "none", padding: 0, marginTop: 24, color: "var(--acid)", fontSize: 12, cursor: "pointer", display: "inline-flex", gap: 9, alignItems: "center" }} className="mono">
-          VIEW CASE STUDY <ChevronRight size={15} />
-        </button>
       </div>
     </article>
+  );
+}
+
+function ProjectModal({project,onClose}:{project:Project;onClose:()=>void}) {
+  const background =
+    project.accent === "violet" ? "radial-gradient(circle,rgba(139,108,255,.24),transparent 45%),#090a0f" :
+    project.accent === "cyan" ? "radial-gradient(circle,rgba(102,217,255,.22),transparent 45%),#090a0f" :
+    project.accent === "orange" ? "radial-gradient(circle,rgba(255,145,80,.20),transparent 45%),#090a0f" :
+    "radial-gradient(circle,rgba(201,255,59,.20),transparent 45%),#090a0f";
+
+  return (
+    <div className="modal-backdrop" onMouseDown={(e)=>{if(e.currentTarget===e.target)onClose()}}>
+      <div className="modal">
+        <button className="modal-close" onClick={onClose} aria-label="Close"><X/></button>
+        <div className="mono section-label">{project.type} · {project.year}</div>
+        <h3>{project.title}</h3>
+        <div className="modal-media" style={{background}}>
+          <span className="mono" style={{fontSize:11,color:"#707586"}}>ADD GAMEPLAY VIDEO / GIF / SCREENSHOT</span>
+        </div>
+        <p>{project.overview}</p>
+        <h4>Systems &amp; features</h4>
+        <div className="modal-features">{project.systems.map((x)=><div className="modal-feature" key={x}><Sparkles size={14} style={{verticalAlign:"middle",marginRight:7,color:"var(--acid)"}}/>{x}</div>)}</div>
+        <div className="modal-actions">
+          <Link href={`/projects/${project.slug}`} className="button-primary" onClick={onClose}>FULL CASE STUDY <ArrowUpRight size={15}/></Link>
+          <a href={project.github} className="button-secondary"><Github size={15}/> GITHUB</a>
+          <a href={project.demo} className="button-secondary"><Play size={15}/> PLAY / DEMO</a>
+        </div>
+      </div>
+    </div>
   );
 }

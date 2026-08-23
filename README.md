@@ -1,35 +1,32 @@
-# Himanshu — Next.js Game Developer Portfolio
+# Himanshu — Game Developer Portfolio v2
 
-This is the corrected Vercel-ready version.
+Next.js 15.5.21 + React 19 + TypeScript + Tailwind CSS v4.
 
-## Stack
-Next.js 15 + React 19 + TypeScript + Tailwind CSS v4 + Lucide React.
+## New features
+- Full hero / personal positioning
+- Game project filtering
+- Quick-view project modal
+- Dedicated project case-study routes: `/projects/chronoshift`, etc.
+- About section
+- Technical skill cards and table
+- Resume section + working starter `public/resume.pdf`
+- Terminal-style developer section
+- Contact section
+- GitHub / LinkedIn / email / resume actions
+- Responsive navigation
+- Mobile layout
+- Scroll progress
+- Vercel-ready Next.js structure
 
-## Important fix
-The previous build error came from the JSX code sample in `components/Portfolio.tsx`. This version uses a normal string array for the code-editor preview, so the JSX compiler does not parse the sample C# syntax.
-
-`app/page.tsx` uses the direct relative import:
-`../components/Portfolio`
+## Before final publishing
+1. Replace the placeholder email in `components/Portfolio.tsx`.
+2. Replace LinkedIn `#` with the real profile.
+3. Replace project `github` and `demo` values in `lib/projects.ts`.
+4. Replace the gameplay media placeholders with real screenshots/GIFs/videos.
+5. Replace `public/resume.pdf` with your final resume if desired.
+6. Replace the portrait placeholder with your photo.
+7. Update project descriptions/statuses if any project has changed.
 
 ## Deploy
-The repository root must contain:
-- app/
-- components/
-- public/
-- package.json
-- next.config.ts
-- tsconfig.json
-- postcss.config.mjs
-
-After pushing this version to GitHub, Vercel should build it as a Next.js project.
-
-## Customize before final publishing
-Replace:
-- your.email@example.com
-- GitHub `#`
-- LinkedIn `#`
-- `/resume.pdf`
-- Project demo/GitHub links
-- Project screenshots/video placeholders
-- Your portrait
-- Any project descriptions that need correction
+Push the complete project to the root of your GitHub repository and let Vercel redeploy.
+The root must contain `app/`, `components/`, `lib/`, `public/`, and `package.json`.
