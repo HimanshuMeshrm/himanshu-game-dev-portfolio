@@ -3,13 +3,7 @@ import "./globals.css";
 
 export const metadata: Metadata = {
   title: "Himanshu — Game Programmer",
-  description: "Himanshu's game development portfolio — Unity, C#, gameplay programming and interactive systems.",
-  metadataBase: new URL("https://example.vercel.app"),
-  openGraph: {
-    title: "Himanshu — Game Programmer",
-    description: "Games, systems and experiments by Himanshu.",
-    type: "website",
-  },
+  description: "Himanshu's game development portfolio — Unity, C#, gameplay programming and interactive systems."
 };
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {

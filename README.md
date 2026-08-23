@@ -1,59 +1,35 @@
 # Himanshu — Next.js Game Developer Portfolio
 
+This is the corrected Vercel-ready version.
+
 ## Stack
-- Next.js 15
-- React 19
-- TypeScript
-- Tailwind CSS v4
-- Lucide React
-- Designed for Vercel
+Next.js 15 + React 19 + TypeScript + Tailwind CSS v4 + Lucide React.
 
-## Run locally
+## Important fix
+The previous build error came from the JSX code sample in `components/Portfolio.tsx`. This version uses a normal string array for the code-editor preview, so the JSX compiler does not parse the sample C# syntax.
 
-Install Node.js 20+ first.
+`app/page.tsx` uses the direct relative import:
+`../components/Portfolio`
 
-```bash
-npm install
-npm run dev
-```
+## Deploy
+The repository root must contain:
+- app/
+- components/
+- public/
+- package.json
+- next.config.ts
+- tsconfig.json
+- postcss.config.mjs
 
-Open http://localhost:3000
+After pushing this version to GitHub, Vercel should build it as a Next.js project.
 
-## Deploy to Vercel
-
-1. Create a GitHub repository.
-2. Upload this project to the repository.
-3. Go to Vercel and import the GitHub repository.
-4. Vercel detects Next.js automatically.
-5. Click Deploy.
-
-## Before publishing
+## Customize before final publishing
 Replace:
-- `your.email@example.com`
+- your.email@example.com
 - GitHub `#`
 - LinkedIn `#`
 - `/resume.pdf`
-- Project demo links
-- Project GitHub links
-- Project artwork/video placeholders
+- Project demo/GitHub links
+- Project screenshots/video placeholders
 - Your portrait
-- Any project details that need correction
-
-## Adding images/videos
-Put images in `public/` and reference them from components using paths such as `/images/chronoshift.jpg`.
-For large gameplay videos, use an external video host or optimized MP4/WebM rather than making the initial page enormous.
-
-## Recommended final project assets
-public/
-  resume.pdf
-  images/
-    profile.jpg
-    chronoshift.jpg
-    freezerun.jpg
-    deepcore.jpg
-    crop.jpg
-    fruit.jpg
-    lava.jpg
-  videos/
-    chronoshift.mp4
-    freezerun.mp4
+- Any project descriptions that need correction
